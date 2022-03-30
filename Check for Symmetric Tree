@@ -1,0 +1,15 @@
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+        if(root==NULL) return false;
+        return getAnswer(root->left, root->right);
+    }
+    
+    bool getAnswer(TreeNode* left, TreeNode* right){
+        if(left==NULL || right==NULL) return (left==right);
+        
+        if(left->val!=right->val) return false;
+        
+        return getAnswer(left->left, right->right) && getAnswer(left->right, right->left);
+    }
+};
